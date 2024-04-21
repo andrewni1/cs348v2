@@ -1,0 +1,212 @@
+.outer-container {
+  margin: 20px;
+}
+
+.outer-container input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.state-container {
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid black;
+}
+
+.state-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.state-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.state-info {
+  margin-top: 10px;
+}
+
+.state-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.last-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last-row button {
+  font-size: 12px;
+  background-color: #53a6ff;
+  margin-left: 8px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.city-buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.city-buttons button {
+  font-size: 12px;
+  background-color: #53a6ff;
+  margin-left: 8px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.city-container {
+  background-color: #e6ffea;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid black;
+}
+
+.city-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px;
+}
+
+.city-selection {
+  margin-top: 10px;
+}
+
+.city-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.city-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.add-buttons {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.add-state button,
+.add-city button {
+  margin-right: 8px;
+  margin-bottom: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.add-state button:hover,
+.add-city button:hover {
+  background-color: #0056b3;
+}
+
+
+.population-filter {
+  margin-bottom: 20px;
+}
+
+.population-filter label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.population-filter input[type="number"],
+.population-filter select {
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.population-filter button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.population-filter button:hover {
+  background-color: #45a049;
+}
+
+.population-filter select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.population-filter select:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.population-filter input[type="number"]::-webkit-inner-spin-button,
+.population-filter input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.table-container {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table-container th {
+  background-color: #f2f2f2;
+}
+
+.table-container tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table-container tr:hover {
+  background-color: #ddd;
+}
+
+.last-row select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

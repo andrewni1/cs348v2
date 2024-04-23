@@ -28,33 +28,44 @@ const AddState = () => {
   };
 
   return (
-    <div>
+    <div className='outer-container'>
       <h2>Add New State</h2>
       <form onSubmit={handleSubmit}>
         <label>
-        State Name:
+        State Name: 
           <input
             type="text"
             value={stateName}
             onChange={(e) => setStateName(e.target.value)}
+            required='true'
           />
         </label>
+        <br/>
         <label>
-          Population:
+          Population: 
           <input
-            type="text"
+            type="number"
             value={population}
             onChange={(e) => setPopulation(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === '-') {
+                e.preventDefault();
+              }
+            }}
+            required='true'
           />
         </label>
+        <br/>
         <label>
-          Capital:
+          Capital: 
           <input
             type="text"
             value={capital}
             onChange={(e) => setCapital(e.target.value)}
+            required='true'
           />
         </label>
+        <br/>
         <button type="submit">Create State</button>
       </form>
     </div>

@@ -44,7 +44,7 @@ const AddCity = () => {
   };
 
   return (
-    <div>
+    <div className='outer-container'>
       <h2>Add New City</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -53,34 +53,54 @@ const AddCity = () => {
             type="text"
             value={cityName}
             onChange={(e) => setCityName(e.target.value)}
+            required='true'
           />
         </label>
+        <br/>
         <label>
           Population:
           <input
-            type="text"
+            type="number"
             value={population}
             onChange={(e) => setPopulation(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === '-') {
+                e.preventDefault();
+              }
+            }}
+            required='true'
           />
         </label>
+        <br/>
         <label>
           Zip Code:
           <input
-            type="text"
+            type="number"
             value={zipCode}
-            onChange={(e) => setZipCode(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value.slice(0, 5);
+              setZipCode(value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === '-') {
+                e.preventDefault();
+              }
+            }}
+            required='true'
           />
         </label>
+        <br/>
         <label>
           State:
-          <select value={stateId} onChange={(e) => setStateId(e.target.value)}>
+          <select value={stateId} onChange={(e) => setStateId(e.target.value)} required='true'>
             <option value="">Select a state</option>
             {states.map(state => (
               <option key={state._id} value={state._id}>{state.name}</option>
             ))}
           </select>
         </label>
-        <button type="submit">Create City</button>
+        <br/>
+        <button type="submit">Create</button>
       </form>
     </div>
   );

@@ -58,6 +58,7 @@ function Home() {
         ...prevState,
         [selectedCityData.state]: updatedCities
       }));
+      setSelectedCityData('');
     } catch (error) {
       console.error('Failed to delete city:', error);
     }
@@ -143,57 +144,95 @@ function Home() {
   return (
     <div className='outer-container'>
       <h1>States and Cities</h1>
-      {states.map(state => (
-        <div key={state._id} className='state-container'>
-          <p className='state-name'>
-            {editingState ? (
+      {states.map((state) => (
+        <div key={state._id} className="state-container">
+          <p className="state-name">
+            {editingState === state._id ? (
               <>
                 <label>State Name: </label>
-                <input type="text" value={state.name} onChange={(e) => setStates(prevState => prevState.map(s => s._id === state._id ? { ...s, name: e.target.value } : s))} />
+                <input
+                  type="text"
+                  value={state.name}
+                  onChange={(e) =>
+                    setStates((prevState) =>
+                      prevState.map((s) =>
+                        s._id === state._id ? { ...s, name: e.target.value } : s
+                      )
+                    )
+                  }
+                />
               </>
             ) : (
               state.name
             )}
           </p>
-          {editingState ? (
+          {editingState === state._id ? (
             <>
               <div>
                 <label>Population: </label>
-                <input type="number" value={state.population} onChange={(e) => setStates(prevState => prevState.map(s => s._id === state._id ? { ...s, population: e.target.value } : s))} />
+                <input
+                  type="number"
+                  value={state.population}
+                  onChange={(e) =>
+                    setStates((prevState) =>
+                      prevState.map((s) =>
+                        s._id === state._id ? { ...s, population: e.target.value } : s
+                      )
+                    )
+                  }
+                />
               </div>
               <div>
                 <label>Capital: </label>
-                <input type="text" value={state.capital} onChange={(e) => setStates(prevState => prevState.map(s => s._id === state._id ? { ...s, capital: e.target.value } : s))} />
+                <input
+                  type="text"
+                  value={state.capital}
+                  onChange={(e) =>
+                    setStates((prevState) =>
+                      prevState.map((s) =>
+                        s._id === state._id ? { ...s, capital: e.target.value } : s
+                      )
+                    )
+                  }
+                />
               </div>
             </>
           ) : (
             <>
-              <p className='state-pop'>Population: {state.population}</p>
-              <p className='state-cap'>Capital: {state.capital}</p>
+              <p className="state-pop">Population: {state.population}</p>
+              <p className="state-cap">Capital: {state.capital}</p>
             </>
           )}
-          <div className='last-row'>
+          <div className="last-row">
             <div>
               <label htmlFor={`cities-${state._id}`}>Select a City: </label>
-              <select id={`cities-${state._id}`} onChange={(event) => handleCityChange(event, state._id)}>
+              <select
+                id={`cities-${state._id}`}
+                onChange={(event) => handleCityChange(event, state._id)}
+              >
                 <option value="">-- Select City --</option>
-                {citiesByState[state._id] && citiesByState[state._id].map(city => (
-                  <option key={city._id} value={city._id}>{city.name}</option>
-                ))}
+                {citiesByState[state._id] &&
+                  citiesByState[state._id].map((city) => (
+                    <option key={city._id} value={city._id}>
+                      {city.name}
+                    </option>
+                  ))}
               </select>
             </div>
             <div>
-              <button onClick={() => {
-                if (editingState) {
-                  handleUpdateState(state._id, state.name, state.population, state.capital);
-                }
-                setEditingState(prevState => !prevState);
-              }}>
-                {editingState ? 'Save' : 'Edit'}
+              <button
+                onClick={() => {
+                  if (editingState === state._id) {
+                    handleUpdateState(state._id, state.name, state.population, state.capital);
+                  }
+                  setEditingState(editingState === state._id ? null : state._id);
+                }}
+              >
+                {editingState === state._id ? "Save" : "Edit"}
               </button>
               <button onClick={() => handleDeleteState(state._id)}>Delete</button>
             </div>
-          </div>         
+          </div>
         </div>
       ))}
       {selectedCityData && (

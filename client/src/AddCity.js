@@ -11,7 +11,7 @@ const AddCity = () => {
   useEffect(() => {
     const fetchStates = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/states');
+        const response = await axios.get('https://cs348v2-server.vercel.app/states');
         setStates(response.data);
       } catch (error) {
         console.error('Error fetching states:', error);
@@ -25,7 +25,7 @@ const AddCity = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/create-city', {
+      const response = await axios.post('https://cs348v2-server.vercel.app/create-city', {
         name: cityName,
         population: population,
         state: stateId,

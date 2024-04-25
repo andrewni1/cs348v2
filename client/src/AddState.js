@@ -10,7 +10,7 @@ const AddState = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/create-state', {
+      const response = await axios.post('https://cs348v2-server.vercel.app/create-state', {
         name: stateName,
         population: population,
         capital: capital

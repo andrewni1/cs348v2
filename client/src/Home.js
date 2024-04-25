@@ -23,12 +23,12 @@ function Home() {
   useEffect(() => {
     const fetchStatesAndCities = async () => {
       try {
-        const statesResponse = await axios.get('http://localhost:5000/states');
+        const statesResponse = await axios.get('https://cs348v2-server.vercel.app/states');
         setStates(statesResponse.data);
 
         const citiesByStateData = {};
         for (const state of statesResponse.data) {
-          const citiesResponse = await axios.get(`http://localhost:5000/cities/${state._id}`);
+          const citiesResponse = await axios.get(`https://cs348v2-server.vercel.app/cities/${state._id}`);
           citiesByStateData[state._id] = citiesResponse.data;
         }
         setCitiesByState(citiesByStateData);
@@ -42,7 +42,7 @@ function Home() {
 
   const handleDeleteState = async (stateId) => {
     try {
-      await axios.delete(`http://localhost:5000/states/${stateId}`);
+      await axios.delete(`https://cs348v2-server.vercel.app/states/${stateId}`);
       const updatedStates = states.filter(state => state._id !== stateId);
       setStates(updatedStates);
     } catch (error) {
@@ -52,7 +52,7 @@ function Home() {
 
   const handleDeleteCity = async (cityId) => {
     try {
-      await axios.delete(`http://localhost:5000/cities/${cityId}`);
+      await axios.delete(`https://cs348v2-server.vercel.app/cities/${cityId}`);
       const updatedCities = citiesByState[selectedCityData.state].filter(city => city._id !== cityId);
       setCitiesByState(prevState => ({
         ...prevState,
@@ -74,13 +74,13 @@ function Home() {
   const handleUpdateState = async (stateId, newName, newPopulation, newCapital) => {
     try {
       // Call update API
-      await axios.put(`http://localhost:5000/states/${stateId}`, {
+      await axios.put(`https://cs348v2-server.vercel.app/states/${stateId}`, {
         name: newName,
         population: newPopulation,
         capital: newCapital
       });
       // Reload states data after update
-      const updatedStatesResponse = await axios.get('http://localhost:5000/states');
+      const updatedStatesResponse = await axios.get('https://cs348v2-server.vercel.app/states');
       setStates(updatedStatesResponse.data);
       setEditingState(false);
     } catch (error) {
@@ -91,13 +91,13 @@ function Home() {
   const handleUpdateCity = async (cityId, newName, newPopulation, newZipCode) => {
     try {
       // Call update API
-      await axios.put(`http://localhost:5000/cities/${cityId}`, {
+      await axios.put(`https://cs348v2-server.vercel.app/cities/${cityId}`, {
         name: newName,
         population: newPopulation,
         zipCode: newZipCode
       });
       // Reload cities data after update
-      const updatedCitiesResponse = await axios.get(`http://localhost:5000/cities/${selectedCityData.state}`);
+      const updatedCitiesResponse = await axios.get(`https://cs348v2-server.vercel.app/cities/${selectedCityData.state}`);
       setCitiesByState(prevState => ({
         ...prevState,
         [selectedCityData.state]: updatedCitiesResponse.data
